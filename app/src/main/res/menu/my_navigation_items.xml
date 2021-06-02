@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_baseline_home_white"
+        android:title="Home"/>
+
+    <item
+        android:id="@+id/nav_daily"
+        android:icon="@drawable/ic_baseline_format_list_bulleted_white"
+        android:title="Daily Activity"/>
+
+    <item
+        android:id="@+id/nav_gallery"
+        android:icon="@drawable/ic_baseline_photo_white"
+        android:title="Gallery"/>
+
+    <item
+        android:id="@+id/nav_music_video"
+        android:icon="@drawable/ic_baseline_library_music_white"
+        android:title="Music and VIdeo"/>
+
+    <item android:title="Profile">
+        <menu>
+            <item
+                android:id="@+id/nav_person"
+                android:icon="@drawable/ic_baseline_person_white"
+                android:title="Profile"/>
+            <item
+                android:id="@+id/nav_exit"
+                android:icon="@drawable/ic_baseline_exit_to_app_white"
+                android:title="Logout"
+                />
+        </menu>
+    </item>
+
+
+
+</menu>
