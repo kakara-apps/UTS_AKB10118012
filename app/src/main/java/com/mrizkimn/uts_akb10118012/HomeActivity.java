@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.text.util.Linkify;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.MediaController;
@@ -47,6 +48,7 @@ public class HomeActivity extends AppCompatActivity {
 
     //Menu Prifile
     ImageButton WA,IG,GHub;
+    Button temukan;
 
     //Daily Activity FriendList
     private RecyclerView rvFriend;
@@ -69,13 +71,37 @@ public class HomeActivity extends AppCompatActivity {
         WA = findViewById(R.id.ib_whatsapp);
         IG = findViewById(R.id.ib_instagram);
         GHub = findViewById(R.id.ib_github);
+        temukan = findViewById(R.id.btn_temukan);
 
-        WA.setOnClickListener(new View.OnClickListener() {
+
+        GHub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/kakara-apps"));
+                startActivity(i);
+                finish();
             }
         });
+
+        IG.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/maulanarizki1999/"));
+                startActivity(i);
+                finish();
+            }
+        });
+
+        temukan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/maps/place/Dago+Bangbayang+Residence/@-6.880111,107.6159103,17z/data=!3m1!4b1!4m5!3m4!1s0x2e68e6fc16f292f1:0xa07e37aa34b7153d!8m2!3d-6.8801189!4d107.618132?hl=id"));
+                startActivity(i);
+                finish();
+            }
+        });
+
+
 
         //Video Preview
         videoView = findViewById(R.id.video_preview);
