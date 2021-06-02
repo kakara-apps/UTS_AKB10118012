@@ -9,12 +9,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.util.Linkify;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -45,6 +48,8 @@ public class HomeActivity extends AppCompatActivity {
     ConstraintLayout gallery;
     MaterialToolbar title;
     VideoView videoView;
+    Dialog dialog;
+    Button about;
 
     //Menu Prifile
     ImageButton WA,IG,GHub;
@@ -66,6 +71,32 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        //custom dialog
+        dialog = new Dialog(HomeActivity.this);
+        dialog.setContentView(R.layout.about_dialog);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+            dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.background_dialog));
+        }
+
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.setCancelable(false);
+
+        Button kembali = dialog.findViewById(R.id.btn_kembali);
+        kembali.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        about = findViewById(R.id.btn_about);
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.show();
+            }
+        });
 
         //menu profile
         WA = findViewById(R.id.ib_whatsapp);
@@ -225,6 +256,7 @@ public class HomeActivity extends AppCompatActivity {
         rvMusic.setHasFixedSize(true);
         listMusic.addAll(FriendData.getListDataMusic());
         showRecyclerListMusic();
+
     }
 
     private void showRecyclerList(){
@@ -247,4 +279,5 @@ public class HomeActivity extends AppCompatActivity {
         ListMusicAdapter listMusicAdapter = new ListMusicAdapter(listMusic);
         rvMusic.setAdapter(listMusicAdapter);
     }
+
 }
