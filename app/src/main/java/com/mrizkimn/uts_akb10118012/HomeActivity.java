@@ -1,5 +1,6 @@
 package com.mrizkimn.uts_akb10118012;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -9,7 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -232,6 +235,19 @@ public class HomeActivity extends AppCompatActivity {
                         profile.setVisibility(View.VISIBLE);
                         title.setTitle("Profile");
                         break;
+                    case R.id.nav_exit:
+                        new AlertDialog.Builder(HomeActivity.this)
+                                .setMessage("Apa kalian ingin Exit?")
+                                .setCancelable(false)
+                                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        HomeActivity.this.finish();
+                                    }
+                                })
+                                .setNegativeButton("No", null)
+                                .show();
+                        break;
+
                     default:
                         return true;
                 }
@@ -258,6 +274,7 @@ public class HomeActivity extends AppCompatActivity {
         showRecyclerListMusic();
 
     }
+    
 
     private void showRecyclerList(){
 
